@@ -2,7 +2,7 @@
 require_once("connection.php");
 if(!empty($_POST["state_id"])) 
 {
-$query =mysqli_query($con,"SELECT * FROM district WHERE StCode = '" . $_POST["state_id"] . "'");
+$query = mysqli_query($con,"SELECT * FROM district WHERE StCode = '" . $_POST["state_id"] . "'");
 ?>
 <option value="">Select District</option>
 <?php
