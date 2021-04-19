@@ -3,6 +3,7 @@
     if(isset($_POST['donate']) && !empty($_POST['contactNumber']) && !empty($_POST['fname']))
     { 
         $checkCovid= $_POST['checkCovid'];
+        $recoveredon= $_POST['recoveredon'];
         $fname= trim($_POST['fname']);
         $emailAddress= trim($_POST['emailAddress']);
         $contactNumber= trim($_POST['contactNumber']);
@@ -16,7 +17,7 @@
         if ($count>0) {
             header("Location: index.php#find_a_donor");
         } else {
-            $sql= "insert into donor_information(checkCovid,fname,emailAddress,contactNumber,bloodGroup,gender,state,district) value('$checkCovid','$fname','$emailAddress', '$contactNumber', '$bloodGroup', '$gender', '$state','$district')";
+            $sql= "insert into donor_information(checkCovid,recoveredon,fname,emailAddress,contactNumber,bloodGroup,gender,state,district) value('$checkCovid', '$recoveredon', '$fname','$emailAddress', '$contactNumber', '$bloodGroup', '$gender', '$state','$district')";
             $query=mysqli_query($con, $sql);
             header("Location: index.php#find_a_donor");
         }

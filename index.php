@@ -190,7 +190,11 @@
                               <select name="checkCovid" id="checkCovid" class="form-control">
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
-                                   </select>
+                              </select>
+                                  
+                                   <label>Recovered On:</label>
+                                   <input type="date" id="recoveredon" name="recoveredon" class="form-control">
+                                   
                                    <label>Full Name</label>
                                    <input required type="text" class="form-control" placeholder="Enter full name" name="fname">
                                         <label>Email Address</label>
@@ -296,6 +300,7 @@
                     <tr>
                         <th>S.No</th>
                         <th>Check Covid</th>                       
+                        <th>Recovered On</th>                       
                         <th>Full Name</th>                       
                         <th>Email Address</th>
                         <th>Contact Number</th>
@@ -317,6 +322,7 @@ while ($row=mysqli_fetch_array($ret)) {
 <tr>
                         <td><?php echo $cnt;?></td>
                         <td><?php  echo $row['checkCovid'];?></td>
+                        <td><?php  echo $row['recoveredon'];?></td>
                         <td><?php  echo $row['fname'];?></td>
                         <td><?php  echo $row['emailAddress'];?></td>                        
                         <td><?php  echo $row['contactNumber'];?></td>                        
