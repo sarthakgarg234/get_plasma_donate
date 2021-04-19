@@ -10,11 +10,12 @@
      <meta name="keywords" content="covid19, plasma, donation, bloodGroup">
      <meta name="author" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+     <link rel="shortcut icon" type="image/x-icon" href="images/favicon_icon.png">
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/owl.carousel.css">
      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="css/datepicker.css">
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/templatemo-style.css">
@@ -168,7 +169,7 @@
                                         <p>If you matches with the required plasma you are looking for the patient can then contact the displayed donors via mobile or email directly.</p>
                                    </figcaption>
                               </figure>
-                         </div>
+                         </div>     
                     </div>
 
                </div>
@@ -193,10 +194,12 @@
                               </select>
                                   
                                    <label>Recovered On:</label>
-                                   <input type="date" id="recoveredon" name="recoveredon" class="form-control">
+                                   <input type="text" id="recoveredon" name="recoveredon" class="form-control datepicker">
                                    
                                    <label>Full Name</label>
                                    <input required type="text" class="form-control" placeholder="Enter full name" name="fname">
+                                   <label>Age</label>
+                                   <input required type="number" class="form-control" placeholder="Enter your age" name="age">
                                         <label>Email Address</label>
                                    <input required type="email" class="form-control" placeholder="Enter email address"
                                         name="emailAddress">
@@ -222,19 +225,20 @@
                                         <option value="Others">Others</option>
                                    </select>
                                    <label>State</label>
-                                   <select onChange="getdistrict(this.value);" name="state" id="state" class="form-control">
+                                   <select required onChange="getdistrict(this.value);" name="state" id="state" class="form-control">
+                                        <option value="">Select State</option>
                                         <?php $query =mysqli_query($con,"SELECT * FROM state");
                                         while($row=mysqli_fetch_array($query)) { ?>
                                         <option value="<?php echo $row['StCode'];?>"><?php echo $row['StateName'];?></option><?php } ?>
                                    </select>
                                    <label>District</label>
-                                   <select name="district" id="district-list" class="form-control">
+                                   <select required name="district" id="district-list" class="form-control">
                                         <option value="">Select</option>
                                    </select>
                               </div>
                               <div>
                               <input type="checkbox" required id="vehicle1" name="authorize" value="">
-                              <label for="vehicle1">I authorise this website to display my name and telephone number, so that the needy could contact me fot the required plasma or other query.</label><br>
+                              <label for="vehicle1">I authorise this website to display my name and telephone number, so that the needy could contact me for the required plasma or other query.</label><br>
                               </div>
                               <div class="col-md-4 col-sm-12">
                                    <input type="submit" class="form-control" name="donate" value="Donate">
@@ -302,6 +306,7 @@
                         <th>Check Covid</th>                       
                         <th>Recovered On</th>                       
                         <th>Full Name</th>                       
+                        <th>Age</th>                       
                         <th>Email Address</th>
                         <th>Contact Number</th>
                         <th>Blood Group</th>
@@ -312,7 +317,7 @@
                 </thead>
                 <tbody>
                 <?php
-$ret=mysqli_query($con,"select * from donor_information");
+$ret=mysqli_query($con,"SELECT donor_information.*, state.StateName FROM donor_information LEFT JOIN state ON donor_information.state = state.StCode");
 $cnt=1;
 $row=mysqli_num_rows($ret);
 if($row>0){
@@ -324,11 +329,12 @@ while ($row=mysqli_fetch_array($ret)) {
                         <td><?php  echo $row['checkCovid'];?></td>
                         <td><?php  echo $row['recoveredon'];?></td>
                         <td><?php  echo $row['fname'];?></td>
+                        <td><?php  echo $row['age'];?></td>
                         <td><?php  echo $row['emailAddress'];?></td>                        
                         <td><?php  echo $row['contactNumber'];?></td>                        
                         <td><?php  echo $row['bloodGroup'];?></td>
                         <td><?php  echo $row['gender'];?></td>
-                        <td><?php  echo $row['state'];?></td>
+                        <td><?php  echo $row['StateName'];?></td>
                         <td> <?php  echo $row['district'];?></td>
                         
                     </tr>
@@ -382,8 +388,14 @@ $cnt=$cnt+1;
      <script src="js/owl.carousel.min.js"></script>
      <script src="js/smoothscroll.js"></script>
      <script src="js/custom.js"></script>
+     <script src="js/bootstrap-datepicker.js"></script>
      <script type="text/javascript">
-          $('#donorListing').dataTable();
+          $('#donorListing').dataTable({
+               "iDisplayLength": 50
+          });
+          $('.datepicker').datepicker().on('changeDate', function(ev) {
+          $('.datepicker').datepicker('hide');
+          });
      </script>
      <script>
           function getdistrict(val) {
