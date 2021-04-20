@@ -165,6 +165,14 @@
       <section id="find_a_donor" class="find_a_donor">
          <div class="container">
           <h2 class="text-center">FIND A DONOR</h2>
+          <?php if (isset($_SESSION['donor_success_message']) && $_SESSION['donor_success_message'] != '') { ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <?php echo $_SESSION['donor_success_message']; ?>
+            </div>
+         <?php $_SESSION['donor_success_message'] = '';
+               unset($_SESSION['donor_success_message']); 
+         } ?>   
             <div class="table-responsive">
                <div class="table-wrapper">
                     <div class="selection-box">
