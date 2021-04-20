@@ -198,11 +198,11 @@
                         <tr>
                            <th>S.No</th>
                            <th>Recovered On</th>
-                           <th>Age</th>
-                           <th>Full Name</th>
-                           <th>Email Address</th>
-                           <th>Contact Number</th>
                            <th>Blood Group</th>
+                           <th>Full Name</th>
+                           <th>Contact Number</th>
+                           <th>Email Address</th>
+                           <th>Age</th>
                            <th>Gender</th>
                            <th>State</th>
                            <th>District</th>
@@ -220,11 +220,11 @@
                         <tr>
                            <td><?php echo $cnt;?></td>
                            <td><?php  echo $row['recoveredon'];?>
-                           <td><?php  echo $row['age'];?>
+                           <td><?php  echo $row['bloodGroup'];?>
                            <td><?php  echo $row['fname'];?></td>
+                           <td><a href="tel:<?php echo $row['contactNumber'];?>"><?php echo $row['contactNumber'];?></a></td>
                            <td><?php  echo $row['emailAddress'];?></td>
-                           <td><?php  echo $row['contactNumber'];?></td>
-                           <td><?php  echo $row['bloodGroup'];?></td>
+                           <td><?php  echo $row['age'];?></td>
                            <td><?php  echo $row['gender'];?></td>
                            <td><?php  echo $row['StateName'];?></td>
                            <td> <?php  echo $row['district'];?></td>
