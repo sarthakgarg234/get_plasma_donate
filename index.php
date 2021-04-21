@@ -1,5 +1,6 @@
 <?php include("connection.php"); 
      $query_state =mysqli_query($con,"SELECT * FROM state");
+     $query_state_plasma =mysqli_query($con,"SELECT * FROM state");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,10 +63,10 @@
                <ul class="nav navbar-nav navbar-nav-first">
                   <li><a href="#about" class="smoothScroll">How It Works</a></li>
                   <li><a href="#who_can_donate" class="smoothScroll">Who Can Donate</a></li>
-                  <li><a href="#contact" class="smoothScroll">Donate Plasma</a></li>
+                  <li><a href=".donate_plasma" class="smoothScroll">Donate Plasma</a></li>
                   <li><a href="#find_a_donor" class="smoothScroll">Find a Donor</a></li>
-                  <li><a href="#what_we_do" class="smoothScroll">What we do</a></li>
-                  <li><a href="#plasma_therapy" class="smoothScroll">More about Plasma</a></li>
+                  <li><a href="#oxygen_cylinder" class="smoothScroll">Oxygen Cylinder</a></li>
+                  <li><a href=".add_oxygen_cylinder" class="smoothScroll">Add Oxygen Cylinder</a></li>
                </ul>
             </div>
          </div>
@@ -81,7 +82,8 @@
                            <h1>India Needs You !</h1>
                            <h3> If you are a recovered Covid 19 patient, come forward and donate your plasma. Your contribution may help save a life!</h3>
                            <a href="#contact" class="section-btn btn btn-default smoothScroll">Donate Plasma</a>
-                           <a href="#find_a_donor" class="section-btn btn btn-default smoothScroll">Find a Donor</a>
+                           <a href="#find_a_donor" class="section-btn btn btn-default smoothScroll">Find a Plasma Donor</a>
+                           <a href="#oxygen_cylinder" class="section-btn btn btn-default smoothScroll">Find Oxygen Cylinder</a>
                         </div>
                      </div>
                   </div>
@@ -160,8 +162,7 @@
             </div>
          </div>
       </section>
-   
-      <!-- Donor Listing -->
+      <!-- Plasma Listing -->
       <section id="find_a_donor" class="find_a_donor">
          <div class="container">
           <h2 class="text-center">FIND A DONOR</h2>
@@ -242,8 +243,8 @@
             </div>
          </div>
       </section>
-      <!-- CONTACT -->
-      <section id="contact">
+      <!-- DONATE PLASMA -->
+      <section id="contact" class="donate_plasma">
          <div class="container">
             <h2 class="text-center">DONATE PLASMA</h2>
             <form id="contact-form" role="form" action="save_donor_information.php" method="post">
@@ -303,17 +304,17 @@
                   </div>
                   <div class="col-md-6">
                      <label>State</label>
-                     <select required onChange="getdistrict(this.value);" name="state" id="state" class="form-control">
+                     <select required onChange="getdistrictPlasma(this.value);" name="state" id="state" class="form-control">
                          <option value="">Select State</option>
                         <?php 
-                           while($row=mysqli_fetch_array($query_state)) { ?>
+                           while($row=mysqli_fetch_array($query_state_plasma)) { ?>
                         <option value="<?php echo $row['StCode'];?>"><?php echo $row['StateName'];?></option>
                         <?php } ?>
                      </select>
                   </div>
                   <div class="col-md-6">
                      <label>District</label>
-                     <select required name="district" id="district-list" class="form-control">
+                     <select required name="district" id="district-list-plasma" class="form-control">
                         <option value="">Select</option>
                      </select>
                   </div>
@@ -328,7 +329,104 @@
             </form>
          </div>
       </section>
-
+       <!-- FIND OXYGEN CYLINDER -->
+       <section id="oxygen_cylinder" class="oxygen_cylinder">
+         <div class="container">
+          <h2 class="text-center">FIND OXYGEN</h2>
+          <?php if (isset($_SESSION['oxygen_success_message']) && $_SESSION['oxygen_success_message'] != '') { ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <?php echo $_SESSION['oxygen_success_message']; ?>
+            </div>
+         <?php $_SESSION['oxygen_success_message'] = '';
+               unset($_SESSION['oxygen_success_message']); 
+         } ?>   
+            <div class="table-responsive">
+               <div class="table-wrapper">
+                  <table id="oxygenListing" class="table table-striped table-hover">
+                     <thead>
+                        <tr>
+                           <th>S.No</th>
+                           <th>Dealer Name</th>
+                           <th>Contact Number</th>
+                           <th>State</th>
+                           <th>District</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <?php
+                           $ret=mysqli_query($con,"SELECT oxygen_cylinder_details.*, state.StateName FROM oxygen_cylinder_details LEFT JOIN state ON oxygen_cylinder_details.state = state.StCode order by state.StateName");
+                           $cnt=1;
+                           $row=mysqli_num_rows($ret);
+                           if($row>0){
+                           while ($row=mysqli_fetch_array($ret)) {
+                           ?>
+                        <!--Fetch the Records -->
+                        <tr>
+                           <td><?php echo $cnt;?></td>
+                           <td><?php  echo $row['dealerName'];?></td>
+                           <td><a href="tel:<?php echo $row['contactNumber'];?>"><?php echo $row['contactNumber'];?></a></td>
+                           <td><?php  echo $row['StateName'];?></td>
+                           <td> <?php  echo $row['district'];?></td>
+                        </tr>
+                        <?php 
+                           $cnt=$cnt+1;
+                           } } else {?>
+                        <tr>
+                           <th style="text-align:center; color:red;" colspan="6">No Record Found</th>
+                        </tr>
+                        <?php } ?>                 
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- ADD OXYGEN CYLINDER -->
+      <section id="contact" class="add_oxygen_cylinder">
+         <div class="container">
+            <h2 class="text-center">ADD OXYGEN CYLINDER</h2>
+            <form id="contact-form" role="form" action="add_oxygen_cylinder.php" method="post">
+               <h4>Please Enter Oxygen Cylinder Details Below</h4>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>State</label>
+                     <select required onChange="getdistrict(this.value);" name="state" id="state" class="form-control">
+                         <option value="">Select State</option>
+                        <?php 
+                           while($row=mysqli_fetch_array($query_state)) { ?>
+                        <option value="<?php echo $row['StCode'];?>"><?php echo $row['StateName'];?></option>
+                        <?php } ?>
+                     </select>
+                  </div>
+                  <div class="col-md-6">
+                     <label>District</label>
+                     <select required name="district" id="district-list" class="form-control">
+                        <option value="">Select</option>
+                     </select>
+                  </div>
+                  <div class="col-md-6">
+                     <label>Dealer Name</label>
+                     <input required type="text" class="form-control" placeholder="Enter your name"
+                        name="dealerName">
+                  </div>
+                  <div class="col-md-6">
+                     <label>Contact Number</label>
+                     <input required type="number" class="form-control" placeholder="Enter contact number"
+                        name="contactNumber">
+                  </div>
+                  <div class="col-sm-12">
+                     <input type="checkbox" required id="authorize_oxygen" name="authorize_oxygen" value="">
+                     <label for="authorize_oxygen">I authorise this website to display my name and telephone number, so that the needy could contact me for the required oxygen or other query.</label><br>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                     <input type="submit" class="form-control" name="add" value="Add">
+                  </div>
+               </div>
+            </form>
+         </div>
+      </section>
+                       
       <!-- What we do -->
       <section id="what_we_do">
          <div class="container">
@@ -342,48 +440,6 @@
                            <p>Plasma therapy is an experimental COVID-19 therapy. Before you register, please consult your doctor if this is required. Only patients with a case sheet from the doctor on duty will be matched.</p>
                            <p>It is a non commercial initiative started with an intention of helping people out in whatever possible way. If you want to reach out and understand more about the initiative, please email us on <strong>getplasmadonorin@gmail.com</strong>.</p>
                            <p>We do not promote any monetary transaction between patient and donor.</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <!-- FEATURE -->
-      <section id="plasma_therapy">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12">
-                  <div class="section-title text-center">
-                     <h2>PLASMA THERAPY <small>The therapy aims at using antibodies from the blood of a recovered COVID-19 patient
-                        to treat those critically infected by the virus.
-                        </small>
-                     </h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row d-flex">
-               <div class="col-md-6">
-                  <div class="feature-thumb">
-                     <h3>What is Plasma?</h3>
-                     <p>Plasma is the clear, straw-colored liquid portion of blood that remains after red blood cells, white blood cells, platelets and other cellular components are removed. It is the single largest component of human blood, comprising about 55 percent, and contains water, salts, enzymes, antibodies and other proteins.</p>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="feature-thumb">
-                     <h3>What is Covid-19 Plasma?</h3>
-                     <p>Convalescent plasma refers to plasma obtained from an individual who has recuperated from an infection. During the infectious period, the individual’s immune system would have mounted an attack on the foreign virus. By the time the virus is vanquished, the body would have developed ammunition specifically to beat the virus, which will be a type of antibody</p>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="feature-thumb">
-                     <h3>Why to donate Plasma?</h3>
-                     <p>Quite simply, plasma donors are needed because lives depend on plasma protein therapies. Donating plasma is often called, "the gift of life.".Plasma donation and blood donation are critically important activities that contribute to saving lives.Your plasma will be used to create therapies to treat Covid-19 patients.</p>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="feature-thumb">
-                     <h3>Who can donate Plasma?</h3>
-                     <p>You have a prior, verified diagnosis of COVID-19, but are now symptom free. You must have recovered from symptoms at least 14 days prior to donation.You are at least 17 years old and less than 65 years old. You do not have diabetes or high blood pressure.</p>
                   </div>
                </div>
             </div>
@@ -423,6 +479,10 @@
                "iDisplayLength": 50
           });
          
+          $('#oxygenListing').dataTable({
+               "iDisplayLength": 50
+          });
+
           $('#bloodGroup').on('change', function () {
                     table.api().column(6).search( this.value ).draw();
                 } );
@@ -438,6 +498,16 @@
               data:'state_id='+val,
               success: function(data){
                    $("#district-list").html(data);
+              }
+              });
+         }
+         function getdistrictPlasma(val) {
+              $.ajax({
+              type: "POST",
+              url: "get_district.php",
+              data:'state_id='+val,
+              success: function(data){
+                   $("#district-list-plasma").html(data);
               }
               });
          }
