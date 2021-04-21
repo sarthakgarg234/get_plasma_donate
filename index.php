@@ -203,10 +203,10 @@
                            <th>Contact Number</th>
                            <th>State</th>
                            <th>District</th>
+                           <th>Gender</th>
                            <th>Recovered On</th>
                            <th>Email Address</th>
                            <th>Age</th>
-                           <th>Gender</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -225,10 +225,10 @@
                            <td><a href="tel:<?php echo $row['contactNumber'];?>"><?php echo $row['contactNumber'];?></a></td>
                            <td><?php  echo $row['StateName'];?></td>
                            <td> <?php  echo $row['district'];?></td>
+                           <td><?php  echo $row['gender'];?></td>
                            <td><?php  echo $row['recoveredon'];?>
                            <td><?php  echo $row['emailAddress'];?></td>
                            <td><?php  echo $row['age'];?></td>
-                           <td><?php  echo $row['gender'];?></td>
                         </tr>
                         <?php 
                            $cnt=$cnt+1;
@@ -259,7 +259,7 @@
                   </div>
                   <div class="col-md-6">
                      <label>Recovered On:</label>
-                     <input required type="text" class="form-control datepicker" placeholder="Enter Date" name="recoveredon" id="recoveredon">
+                     <input type="text" class="form-control datepicker" placeholder="Enter Date" name="recoveredon" id="recoveredon">
                   </div>
                   <div class="col-md-6">
                      <label>Full Name</label>
@@ -267,12 +267,12 @@
                   </div>
                   <div class="col-md-6">
                      <label>Email Address</label>
-                     <input required type="email" class="form-control" placeholder="Enter email address"
+                     <input type="email" class="form-control" placeholder="Enter email address"
                         name="emailAddress">
                   </div>
                   <div class="col-md-6">
                      <label>Age</label>
-                     <input required type="number" class="form-control" placeholder="Enter your age"
+                     <input type="text" class="form-control" placeholder="Enter your age"
                         name="age">
                   </div>
                   <div class="col-md-6">
@@ -282,7 +282,8 @@
                   </div>
                   <div class="col-md-6">
                      <label>Blood Group</label>
-                     <select name="bloodGroup" id="blood group" class="form-control">
+                     <select name="bloodGroup" required id="blood group" class="form-control">
+                        <option value="">Select Blood Group</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
