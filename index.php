@@ -198,15 +198,15 @@
                      <thead>
                         <tr>
                            <th>S.No</th>
-                           <th>Recovered On</th>
                            <th>Blood Group</th>
                            <th>Full Name</th>
                            <th>Contact Number</th>
+                           <th>State</th>
+                           <th>District</th>
+                           <th>Recovered On</th>
                            <th>Email Address</th>
                            <th>Age</th>
                            <th>Gender</th>
-                           <th>State</th>
-                           <th>District</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -220,15 +220,15 @@
                         <!--Fetch the Records -->
                         <tr>
                            <td><?php echo $cnt;?></td>
-                           <td><?php  echo $row['recoveredon'];?>
                            <td><?php  echo $row['bloodGroup'];?>
                            <td><?php  echo $row['fname'];?></td>
                            <td><a href="tel:<?php echo $row['contactNumber'];?>"><?php echo $row['contactNumber'];?></a></td>
+                           <td><?php  echo $row['StateName'];?></td>
+                           <td> <?php  echo $row['district'];?></td>
+                           <td><?php  echo $row['recoveredon'];?>
                            <td><?php  echo $row['emailAddress'];?></td>
                            <td><?php  echo $row['age'];?></td>
                            <td><?php  echo $row['gender'];?></td>
-                           <td><?php  echo $row['StateName'];?></td>
-                           <td> <?php  echo $row['district'];?></td>
                         </tr>
                         <?php 
                            $cnt=$cnt+1;
@@ -332,7 +332,7 @@
        <!-- FIND OXYGEN CYLINDER -->
        <section id="oxygen_cylinder" class="oxygen_cylinder">
          <div class="container">
-          <h2 class="text-center">FIND OXYGEN</h2>
+          <h2 class="text-center">FIND OXYGEN CYLINDER</h2>
           <?php if (isset($_SESSION['oxygen_success_message']) && $_SESSION['oxygen_success_message'] != '') { ?>
             <div class="alert alert-success alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -484,7 +484,7 @@
           });
 
           $('#bloodGroup').on('change', function () {
-                    table.api().column(6).search( this.value ).draw();
+                    table.api().column(1).search( this.value ).draw();
                 } );
           $('.datepicker').datepicker().on('changeDate', function(ev) {
           $('.datepicker').datepicker('hide');
