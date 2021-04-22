@@ -72,10 +72,8 @@
                <ul class="nav navbar-nav navbar-nav-first">
                   <li><a href="#about" class="smoothScroll">How It Works</a></li>
                   <li><a href="#who_can_donate" class="smoothScroll">Who Can Donate</a></li>
-                  <li><a href=".donate_plasma" class="smoothScroll">Donate Plasma</a></li>
                   <li><a href="#find_a_donor" class="smoothScroll">Find a Donor</a></li>
                   <li><a href="#oxygen_cylinder" class="smoothScroll">Oxygen Cylinder</a></li>
-                  <li><a href=".add_oxygen_cylinder" class="smoothScroll">Add Oxygen Cylinder</a></li>
                </ul>
             </div>
          </div>
@@ -90,7 +88,6 @@
                         <div class="col-md-6 col-sm-12 col-md-offset-3">
                            <h1>India Needs You !</h1>
                            <h3> If you are a recovered Covid 19 patient, come forward and donate your plasma. Your contribution may help save a life!</h3>
-                           <a href="#contact" class="section-btn btn btn-default smoothScroll">Donate Plasma</a>
                            <a href="#find_a_donor" class="section-btn btn btn-default smoothScroll">Find a Plasma Donor</a>
                            <a href="#oxygen_cylinder" class="section-btn btn btn-default smoothScroll">Find Oxygen Cylinder</a>
                         </div>
@@ -252,93 +249,7 @@
             </div>
          </div>
       </section>
-      <!-- DONATE PLASMA -->
-      <section id="contact" class="donate_plasma">
-         <div class="container">
-            <h2 class="text-center">DONATE PLASMA</h2>
-            <form id="contact-form" role="form" action="save_donor_information.php" method="post">
-               <h4>Please Enter Donor Details Below</h4>
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>Did you ever get covid:</label>
-                     <select name="checkCovid" id="checkCovid" class="form-control">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                     </select>
-                  </div>
-                  <div class="col-md-6">
-                     <label>Recovered On:</label>
-                     <input type="text" class="form-control datepicker" placeholder="Enter Date" name="recoveredon" id="recoveredon">
-                  </div>
-                  <div class="col-md-6">
-                     <label>Full Name</label>
-                     <input required type="text" class="form-control" placeholder="Enter full name" name="fname">
-                  </div>
-                  <div class="col-md-6">
-                     <label>Email Address</label>
-                     <input type="email" class="form-control" placeholder="Enter email address"
-                        name="emailAddress">
-                  </div>
-                  <div class="col-md-6">
-                     <label>Age</label>
-                     <input type="text" class="form-control" placeholder="Enter your age"
-                        name="age">
-                  </div>
-                  <div class="col-md-6">
-                     <label>Contact Number</label>
-                     <input required type="number" class="form-control" placeholder="Enter contact number"
-                        name="contactNumber">
-                  </div>
-                  <div class="col-md-6">
-                     <label>Blood Group</label>
-                     <select name="bloodGroup" required id="blood group" class="form-control">
-                        <option value="">Select Blood Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="others">Don't Know</option>
-                     </select>
-                  </div>
-                  <div class="col-md-6">
-                     <label>Gender</label>
-                     <select name="gender" id="gender" class="form-control">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Others">Others</option>
-                     </select>
-                  </div>
-                  <div class="col-md-6">
-                     <label>State</label>
-                     <select required onChange="getdistrictPlasma(this.value);" name="state" id="state" class="form-control">
-                         <option value="">Select State</option>
-                        <?php 
-                           while($row=mysqli_fetch_array($query_state_plasma)) { ?>
-                        <option value="<?php echo $row['StCode'];?>"><?php echo $row['StateName'];?></option>
-                        <?php } ?>
-                     </select>
-                  </div>
-                  <div class="col-md-6">
-                     <label>District</label>
-                     <select required name="district" id="district-list-plasma" class="form-control">
-                        <option value="">Select</option>
-                     </select>
-                  </div>
-                  <div class="col-sm-12">
-                     <input type="checkbox" required id="vehicle1" name="authorize" value="">
-                     <label for="vehicle1">I authorise this website to display my name and telephone number, so that the needy could contact me for the required plasma or other query.</label><br>
-                  </div>
-                  <div class="col-md-4 col-sm-12">
-                     <input type="submit" class="form-control" name="donate" value="Donate">
-                  </div>
-               </div>
-            </form>
-         </div>
-      </section>
+
        <!-- FIND OXYGEN CYLINDER -->
        <section id="oxygen_cylinder" class="oxygen_cylinder">
          <div class="container">
@@ -390,50 +301,6 @@
                   </table>
                </div>
             </div>
-         </div>
-      </section>
-      <!-- ADD OXYGEN CYLINDER -->
-      <section id="contact" class="add_oxygen_cylinder">
-         <div class="container">
-            <h2 class="text-center">ADD OXYGEN CYLINDER</h2>
-            <form id="contact-form" role="form" action="add_oxygen_cylinder.php" method="post">
-               <h4>Please Enter Oxygen Cylinder Details Below</h4>
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>State</label>
-                     <select required onChange="getdistrict(this.value);" name="state" id="state" class="form-control">
-                         <option value="">Select State</option>
-                        <?php 
-                           while($row=mysqli_fetch_array($query_state)) { ?>
-                        <option value="<?php echo $row['StCode'];?>"><?php echo $row['StateName'];?></option>
-                        <?php } ?>
-                     </select>
-                  </div>
-                  <div class="col-md-6">
-                     <label>District</label>
-                     <select required name="district" id="district-list" class="form-control">
-                        <option value="">Select</option>
-                     </select>
-                  </div>
-                  <div class="col-md-6">
-                     <label>Dealer Name</label>
-                     <input required type="text" class="form-control" placeholder="Enter your name"
-                        name="dealerName">
-                  </div>
-                  <div class="col-md-6">
-                     <label>Contact Number</label>
-                     <input required type="number" class="form-control" placeholder="Enter contact number"
-                        name="contactNumber">
-                  </div>
-                  <div class="col-sm-12">
-                     <input type="checkbox" required id="authorize_oxygen" name="authorize_oxygen" value="">
-                     <label for="authorize_oxygen">I authorise this website to display my name and telephone number, so that the needy could contact me for the required oxygen or other query.</label><br>
-                  </div>
-                  <div class="col-md-4 col-sm-12">
-                     <input type="submit" class="form-control" name="add" value="Add">
-                  </div>
-               </div>
-            </form>
          </div>
       </section>
                        
@@ -499,28 +366,6 @@
           $('.datepicker').datepicker().on('changeDate', function(ev) {
           $('.datepicker').datepicker('hide');
           });
-      </script>
-      <script>
-         function getdistrict(val) {
-              $.ajax({
-              type: "POST",
-              url: "get_district.php",
-              data:'state_id='+val,
-              success: function(data){
-                   $("#district-list").html(data);
-              }
-              });
-         }
-         function getdistrictPlasma(val) {
-              $.ajax({
-              type: "POST",
-              url: "get_district.php",
-              data:'state_id='+val,
-              success: function(data){
-                   $("#district-list-plasma").html(data);
-              }
-              });
-         }
       </script>
    </body>
 </html>
