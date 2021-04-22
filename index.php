@@ -5,6 +5,15 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMQD0VY56N"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZMQD0VY56N');
+      </script>
       <title>COVID-19 Plasma Donation</title>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=Edge">
