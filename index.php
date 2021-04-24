@@ -1,7 +1,3 @@
-<?php include("connection.php"); 
-     $query_state =mysqli_query($con,"SELECT * FROM state");
-     $query_state_plasma =mysqli_query($con,"SELECT * FROM state");
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -47,6 +43,12 @@
       <link rel="stylesheet" href="css/datepicker.css">
       <!-- MAIN CSS -->
       <link rel="stylesheet" href="css/templatemo-style.css">
+
+      <style>
+         .plasma_resources h3 a {
+            color:#29ca8e;
+         }
+      </style>
    </head>
    <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
       <!-- PRE LOADER -->
@@ -70,10 +72,10 @@
             <!-- MENU LINKS -->
             <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-nav-first">
-                  <li><a href="#about" class="smoothScroll">How It Works</a></li>
                   <li><a href="#who_can_donate" class="smoothScroll">Who Can Donate</a></li>
-                  <li><a href="#find_a_donor" class="smoothScroll">Find a Donor</a></li>
-                  <li><a href="#oxygen_cylinder" class="smoothScroll">Oxygen Cylinder</a></li>
+                  <li><a href="#find_services" class="smoothScroll">Find a Donor</a></li>
+                  <li><a href="#plasma_resources" class="smoothScroll">Plasma Donate</a></li>
+                  <li><a href="#find_services" class="smoothScroll">Oxygen Cylinder</a></li>
                </ul>
             </div>
          </div>
@@ -88,8 +90,9 @@
                         <div class="col-md-6 col-sm-12 col-md-offset-3">
                            <h1>India Needs You !</h1>
                            <h3> If you are a recovered Covid 19 patient, come forward and donate your plasma. Your contribution may help save a life!</h3>
-                           <a href="#find_a_donor" class="section-btn btn btn-default smoothScroll">Find a Plasma Donor</a>
-                           <a href="#oxygen_cylinder" class="section-btn btn btn-default smoothScroll">Find Oxygen Cylinder</a>
+                           <a href="#plasma_resources" class="section-btn btn btn-default smoothScroll">Donate Plasma</a>
+                           <a href="#find_services" class="section-btn btn btn-default smoothScroll">Find a Plasma Donor</a>
+                           <a href="#find_services" class="section-btn btn btn-default smoothScroll">Find Oxygen Cylinder</a>
                         </div>
                      </div>
                   </div>
@@ -97,6 +100,100 @@
             </div>
          </div>
       </section>
+
+      <!-- Services Listing -->
+      <section id="find_services" class="find_a_donor">
+         <div class="container">
+          <h2 class="text-center">Services Searching For</h2> 
+          <form action="twitter_post_search.php" method="POST">
+           <div class="row">
+               <div class="col-md-4">
+               <input type="checkbox"  name="services[]" class="" checked value="ICU Beds"> <label for="" class="">Beds</label>
+               </div>
+               <div class="col-md-4">
+               <input type="checkbox"  name="services[]" class="" checked value="Oxygen"> <label for="" class="">Oxygen Cylinder</label>
+               </div>
+               <div class="col-md-4">
+               <input type="checkbox"  name="services[]" class="" checked value="Plasma"> <label for="" class="">Plasma</label>
+               </div>
+               <div class="col-md-4">
+               <input type="checkbox"  name="services[]" class="" checked value="Remdesivir"> <label for="" class="">Remdesivir</label>
+               </div>
+               <div class="col-md-4">
+               <input type="checkbox" name="services[]" class="" checked value="Ventilator"> <label for="" class="">Ventilator</label>
+               </div>
+               <div class="col-md-4">
+               <input type="checkbox" name="services[]" class="" value="testing" checked> <label for="" class="">RT PCR Test</label>
+            </div>
+
+            <div class="row">
+            <div class="col-md-6">
+                     <label>Enter the City</label>
+                     <input required type="text" class="form-control" placeholder="Enter the  city name" name="cityName">
+                  </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                     <input type="submit" class="form-control" name="search" value="Search">
+                  </div>
+
+           </div>
+           </form>
+         </div>
+      </section>
+
+      <!-- Major cities-->
+      <section id="major_cities" class="major_cities">
+         <div class="container">
+          <h2 class="text-center">Services For Major Cities</h2> 
+          <div class="row">
+          <?php 
+
+          ?>
+            <div class="col-md-6">
+                  <ol>
+                     <li><a href="https://twitter.com/search?q=verified+dehradun+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Dehradun</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+delhi+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Delhi</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+mumbai+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Mumbai</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+pune+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Pune</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+bangalore+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Bangalore</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+ahmedabad+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Ahmedabad</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+kolkata+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Kolkata</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+jaipur+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Jaipur</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+nagpur+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Nagpur</a></li>
+                     <li><a href="https://twitter.com/search?q=verified+lucknow+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Lucknow</a></li>
+                  </ol>
+            </div>
+          </div>
+         </div>
+      </section> 
+
+      <!-- plasma resources -->
+      <section id="plasma_resources" class="plasma_resources">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12">
+                  <div class="about-info">
+                     <h2 class="text-center">PAN INDIA PLASMA RESOURCES</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 col-sm-12">
+                  <div class="about-info">
+                     <h3>1. <a href="https://dhoondh.com/">Dhoondh</a> – Portal for matching donors and patients.</h3>
+                     <h3>2. <a href="http://plasmadonor.in">plasmadonor.in</a> – Bridge between recipients & donors.</h3>
+                     <h3>3. <a href="https://covidplasmain.page.link/pintnetwork">PINT</a> – Plasma In Need for Transfusion.</h3>
+                     <h3>4. <a href="https://needplasma.in/">needplasma.in</a> – Connecting donors and patients.</h3>
+                     <h3>5. <a href="https://plasmaline.in/">PlasmaLine</a> – Matching eligible plasma donors with patients.</h3>
+                     <h3>6. <a href="https://givered.in/">givered.in</a> – for COVID-19 plasma donor match.</h3>
+                     <h3>7. <a href="https://www.simplyblood.com/">simplyblood.com</a> – Find Blood/Plasma Donor.</h3>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section> 
+
       <!-- Who Can Donate -->
       <section id="who_can_donate" class="who_can_donate">
          <div class="container">
@@ -134,186 +231,15 @@
                </div>
             </div>
          </div>
-      </section>
-      <!-- ABOUT -->
-      <section id="about">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12">
-                  <div class="about-info">
-                     <h2 class="text-center">HOW IT WORKS</h2>
-                     <figure>
-                        <span><i class="fa fa-users"></i></span>
-                        <figcaption>
-                           <h3>Register your details</h3>
-                           <p>The Plasma donor can registered their details like Name, Number, Blood group and Location ( which will be visible for visiters who are seeking for plasma ).</p>
-                        </figcaption>
-                     </figure>
-                     <figure>
-                        <span><i class="fa fa-certificate"></i></span>
-                        <figcaption>
-                           <h3>Website will display donors information</h3>
-                           <p>Based on the information provided and searches like ( Blood Group, State & District), our web portal will provide donor's details to the patient.</p>
-                        </figcaption>
-                     </figure>
-                     <figure>
-                        <span><i class="fa fa-bar-chart-o"></i></span>
-                        <figcaption>
-                           <h3>You can contact donor's directly</h3>
-                           <p>If you matches with the required plasma you are looking for then patient can contact the displayed donors via mobile or email directly.</p>
-                        </figcaption>
-                     </figure>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- Plasma Listing -->
-      <section id="find_a_donor" class="find_a_donor">
-         <div class="container">
-          <h2 class="text-center">FIND A DONOR</h2>
-          <?php if (isset($_SESSION['donor_success_message']) && $_SESSION['donor_success_message'] != '') { ?>
-            <div class="alert alert-success alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <?php echo $_SESSION['donor_success_message']; ?>
-            </div>
-         <?php $_SESSION['donor_success_message'] = '';
-               unset($_SESSION['donor_success_message']); 
-         } ?>   
-            <div class="table-responsive">
-               <div class="table-wrapper">
-                    <div class="selection-box">
-                         <div class="row">
-                              <div class="col-md-3">
-                                   <select id="bloodGroup" class="form-control">
-                                       <option value="">Search Blood Group</option>
-                                       <option value="A+">A+</option>
-                                        <option value="A-">A-</option>
-                                        <option value="B+">B+</option>
-                                        <option value="B-">B-</option>
-                                        <option value="O+">O+</option>
-                                        <option value="O-">O-</option>
-                                        <option value="AB+">AB+</option>
-                                        <option value="AB-">AB-</option>
-                                        <option value="others">Don't Know</option>
-                                    </select>
-                              </div>
-                         </div>
-                    </div>
-                  <table id="donorListing" class="table table-striped table-hover">
-                     <thead>
-                        <tr>
-                           <th>S.No</th>
-                           <th>Blood Group</th>
-                           <th>Full Name</th>
-                           <th>Contact Number</th>
-                           <th>State</th>
-                           <th>District</th>
-                           <th>Gender</th>
-                           <th>Recovered On</th>
-                           <th>Email Address</th>
-                           <th>Age</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <?php
-                           $ret=mysqli_query($con,"SELECT donor_information.*, state.StateName FROM donor_information LEFT JOIN state ON donor_information.state = state.StCode");
-                           $cnt=1;
-                           $row=mysqli_num_rows($ret);
-                           if($row>0){
-                           while ($row=mysqli_fetch_array($ret)) {
-                           ?>
-                        <!--Fetch the Records -->
-                        <tr>
-                           <td><?php echo $cnt;?></td>
-                           <td><?php  echo $row['bloodGroup'];?>
-                           <td><?php  echo $row['fname'];?></td>
-                           <td><a href="tel:<?php echo $row['contactNumber'];?>"><?php echo $row['contactNumber'];?></a></td>
-                           <td><?php  echo $row['StateName'];?></td>
-                           <td> <?php  echo $row['district'];?></td>
-                           <td><?php  echo $row['gender'];?></td>
-                           <td><?php  echo $row['recoveredon'];?>
-                           <td><?php  echo $row['emailAddress'];?></td>
-                           <td><?php  echo $row['age'];?></td>
-                        </tr>
-                        <?php 
-                           $cnt=$cnt+1;
-                           } } else {?>
-                        <tr>
-                           <th style="text-align:center; color:red;" colspan="6">No Record Found</th>
-                        </tr>
-                        <?php } ?>                 
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-      </section>
+      </section>                         
 
-       <!-- FIND OXYGEN CYLINDER -->
-       <section id="oxygen_cylinder" class="oxygen_cylinder">
-         <div class="container">
-          <h2 class="text-center">FIND OXYGEN CYLINDER</h2>
-          <?php if (isset($_SESSION['oxygen_success_message']) && $_SESSION['oxygen_success_message'] != '') { ?>
-            <div class="alert alert-success alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <?php echo $_SESSION['oxygen_success_message']; ?>
-            </div>
-         <?php $_SESSION['oxygen_success_message'] = '';
-               unset($_SESSION['oxygen_success_message']); 
-         } ?>   
-            <div class="table-responsive">
-               <div class="table-wrapper">
-                  <table id="oxygenListing" class="table table-striped table-hover">
-                     <thead>
-                        <tr>
-                           <th>S.No</th>
-                           <th>Dealer Name</th>
-                           <th>Contact Number</th>
-                           <th>State</th>
-                           <th>District</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <?php
-                           $ret=mysqli_query($con,"SELECT oxygen_cylinder_details.*, state.StateName FROM oxygen_cylinder_details LEFT JOIN state ON oxygen_cylinder_details.state = state.StCode order by state.StateName");
-                           $cnt=1;
-                           $row=mysqli_num_rows($ret);
-                           if($row>0){
-                           while ($row=mysqli_fetch_array($ret)) {
-                           ?>
-                        <!--Fetch the Records -->
-                        <tr>
-                           <td><?php echo $cnt;?></td>
-                           <td><?php  echo $row['dealerName'];?></td>
-                           <td><a href="tel:<?php echo $row['contactNumber'];?>"><?php echo $row['contactNumber'];?></a></td>
-                           <td><?php  echo $row['StateName'];?></td>
-                           <td> <?php  echo $row['district'];?></td>
-                        </tr>
-                        <?php 
-                           $cnt=$cnt+1;
-                           } } else {?>
-                        <tr>
-                           <th style="text-align:center; color:red;" colspan="6">No Record Found</th>
-                        </tr>
-                        <?php } ?>                 
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-      </section>
-                       
       <!-- What we do -->
       <section id="what_we_do">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-sm-12">
                   <div class="about-info">
-                     <h2 class="text-center">What we do</h2>
-                           <p>Plasma Donors can register their information with us. This information pertains to name, contact number, blood group, location etc. This helps us in finding the best match for the patients. Patient can directly see those information in website we do not act as intermediaries between the patient and the donor. Once both the parties have a match, they can directly contact each other.</p>
-
-                           <h3 style="margin-bottom:10px;"><strong>Please note</h3> 
+                     <h2 class="text-center">What we do</h2> 
                            <p>Plasma therapy is an experimental COVID-19 therapy. Before you register, please consult your doctor if this is required. Only patients with a case sheet from the doctor on duty will be matched.</p>
                            <p>It is a non commercial initiative started with an intention of helping people out in whatever possible way. If you want to reach out and understand more about the initiative, please email us on <strong>getplasmadonorin@gmail.com</strong>.</p>
                            <p>We do not promote any monetary transaction between patient and donor.</p>
@@ -351,21 +277,5 @@
       <script src="js/smoothscroll.js"></script>
       <script src="js/custom.js"></script>
       <script src="js/bootstrap-datepicker.js"></script>
-      <script type="text/javascript">
-         var table =  $('#donorListing').dataTable({
-               "iDisplayLength": 50
-          });
-         
-          $('#oxygenListing').dataTable({
-               "iDisplayLength": 50
-          });
-
-          $('#bloodGroup').on('change', function () {
-                    table.api().column(1).search( this.value ).draw();
-                } );
-          $('.datepicker').datepicker().on('changeDate', function(ev) {
-          $('.datepicker').datepicker('hide');
-          });
-      </script>
    </body>
 </html>
