@@ -4,7 +4,7 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php [NC,L] 
 
 #redirect IP to domain
-RewriteCond %{HTTP_HOST} ^3\.141\.105\.87$
+RewriteCond %{HTTP_HOST} ^3\.133\.83\.131$
 RewriteRule ^(.*)$ https://www.getplasma.store/$1 [L,R=301]
 
 RewriteCond %{HTTPS} off

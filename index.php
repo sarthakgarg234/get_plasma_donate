@@ -104,38 +104,40 @@
       <!-- Services Listing -->
       <section id="find_services" class="find_a_donor">
          <div class="container">
-          <h2 class="text-center">Services Searching For</h2> 
+          <div class="section-title text-center">
+             <h2 class="text-center">Services Searching For</h2> 
+          </div>
           <form action="twitter_post_search.php" method="POST">
            <div class="row">
                <div class="col-md-4">
-               <input type="checkbox"  name="services[]" class="" checked value="ICU Beds"> <label for="" class="">Beds</label>
+                  <input type="checkbox" id="1" name="services[]" class="" checked value="ICU Beds"> <label for="1" class="">Beds</label>
                </div>
                <div class="col-md-4">
-               <input type="checkbox"  name="services[]" class="" checked value="Oxygen"> <label for="" class="">Oxygen Cylinder</label>
+                  <input type="checkbox"  id="2"  name="services[]" class="" checked value="Oxygen"> <label for="2" class="">Oxygen Cylinder</label>
                </div>
                <div class="col-md-4">
-               <input type="checkbox"  name="services[]" class="" checked value="Plasma"> <label for="" class="">Plasma</label>
+                  <input type="checkbox"  id="3"  name="services[]" class="" checked value="Plasma"> <label for="3" class="">Plasma</label>
                </div>
                <div class="col-md-4">
-               <input type="checkbox"  name="services[]" class="" checked value="Remdesivir"> <label for="" class="">Remdesivir</label>
+                  <input type="checkbox"  id="4"  name="services[]" class="" checked value="Remdesivir"> <label for="4" class="">Remdesivir</label>
                </div>
                <div class="col-md-4">
-               <input type="checkbox" name="services[]" class="" checked value="Ventilator"> <label for="" class="">Ventilator</label>
+                  <input type="checkbox"  id="5" name="services[]" class="" checked value="Ventilator"> <label for="5" class="">Ventilator</label>
                </div>
                <div class="col-md-4">
-               <input type="checkbox" name="services[]" class="" value="testing" checked> <label for="" class="">RT PCR Test</label>
+                  <input type="checkbox" id="6"  name="services[]" class="" value="testing" checked> <label for="6" class="">RT PCR Test</label>
+               </div>
             </div>
-
             <div class="row">
-            <div class="col-md-6">
-                     <label>Enter the City</label>
-                     <input required type="text" class="form-control" placeholder="Enter the  city name" name="cityName">
-                  </div>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                     <input type="submit" class="form-control" name="search" value="Search">
-                  </div>
-
+               <div class="col-md-12">
+                  <label>Enter the City</label>
+               </div>
+               <div class="col-md-6">
+                  <input required type="text" class="form-control" placeholder="Enter the city name" name="cityName">
+               </div>
+               <div class="col-md-4">
+                  <input type="submit" class="form-control" name="search" value="Search">
+               </div>
            </div>
            </form>
          </div>
@@ -144,12 +146,13 @@
       <!-- Major cities-->
       <section id="major_cities" class="major_cities">
          <div class="container">
-          <h2 class="text-center">Services For Major Cities</h2> 
+            <div class="section-title text-center">
+               <h2 class="text-center">Services For Major Cities</h2> 
+            </div>
           <div class="row">
           <?php 
 
           ?>
-            <div class="col-md-6">
                   <ol>
                      <li><a href="https://twitter.com/search?q=verified+dehradun+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Dehradun</a></li>
                      <li><a href="https://twitter.com/search?q=verified+delhi+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Delhi</a></li>
@@ -162,7 +165,6 @@
                      <li><a href="https://twitter.com/search?q=verified+nagpur+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Nagpur</a></li>
                      <li><a href="https://twitter.com/search?q=verified+lucknow+%28ICU+Beds+OR+Oxygen+OR+Plasma+OR+Remdesivir+OR+Ventilator+OR+testing+%29&f=live" target="_blank" rel="noopener noreferrer">Lucknow</a></li>
                   </ol>
-            </div>
           </div>
          </div>
       </section> 
@@ -170,13 +172,10 @@
       <!-- plasma resources -->
       <section id="plasma_resources" class="plasma_resources">
          <div class="container">
-            <div class="row">
-               <div class="col-md-12 col-sm-12">
-                  <div class="about-info">
-                     <h2 class="text-center">PAN INDIA PLASMA RESOURCES</h2>
-                  </div>
-               </div>
+            <div class="section-title text-center">
+               <h2 class="text-center">PAN INDIA PLASMA RESOURCES</h2>
             </div>
+            
             <div class="row">
                <div class="col-md-12 col-sm-12">
                   <div class="about-info">
@@ -197,14 +196,16 @@
       <!-- Who Can Donate -->
       <section id="who_can_donate" class="who_can_donate">
          <div class="container">
+            <div class="section-title text-center">
+               <h2 class="text-center">DONOR ELIGIBILITY FOR PLASMA DONATION</h2>
+            </div>
             <div class="row">
                <div class="col-md-12 col-sm-12">
                   <div class="about-info">
-                     <h2 class="text-center">DONOR ELIGIBILITY FOR PLASMA DONATION</h2>
-                     <h5>Convalescent plasma, which is taken from a person who has been cured of corona infection. In short, it may be a promising alternative in the treatment of plasma COVID-19 disease.
-                        If you have ever been infected with corona and have become corona negative after infection, you have been treated for 14 days and you are feeling healthy then only you are eligible to donate Convalescent Plasma.
-                        By becoming a plasma donor, with your priceless plasma, you can give a new hope of life to the corona patient!
-                     </h5>
+                     <p>Convalescent plasma, which is taken from a person who has been cured of corona infection. In short, it may be a promising alternative in the treatment of plasma COVID-19 disease.
+                     If you have ever been infected with corona and have become corona negative after infection, you have been treated for 14 days and you are feeling healthy then only you are eligible to donate Convalescent Plasma.
+                     By becoming a plasma donor, with your priceless plasma, you can give a new hope of life to the corona patient!
+                     </p>
                   </div>
                </div>
             </div>
@@ -212,21 +213,25 @@
                <div class="col-md-6 col-sm-12">
                   <div class="about-info">
                      <h3>You CAN donate plasma if:</h3>
-                     <p>You are between 18-60 years old.</p>
-                     <p>You were tested positive for COVID-19.</p>
-                     <p>You have fully recovered and are free of symptoms for 14 days.</p>
+                     <ul>
+                        <li>You are between 18-60 years old.</li>
+                        <li>You were tested positive for COVID-19.</li>
+                        <li>You have fully recovered and are free of symptoms for 14 days.</li>
+                     </ul>
                   </div>
                </div>
                <div class="col-md-6 col-sm-12">
                   <div class="about-info">
                      <h3>You cannot donate plasma if:</h3>
-                     <p>Your weight is less than 50 kg.</p>
-                     <p>You are a Cancer Survivor.</p>
-                     <p>Females who have ever been pregnant</p>
-                     <p>You have chronic kidney/heart/lung or liver disease.</p>
-                     <p>
+                    <ul>
+                        <li>Your weight is less than 50 kg.</li>
+                     <li>You are a Cancer Survivor.</li>
+                     <li>Females who have ever been pregnant</li>
+                     <li>You have chronic kidney/heart/lung or liver disease.</li>
+                     <li>
                         You have uncontrolled diabetes or hypertension with change in medication in last 28 days
-                     </p>
+                     </li>
+                    </ul>
                   </div>
                </div>
             </div>
@@ -236,10 +241,12 @@
       <!-- What we do -->
       <section id="what_we_do">
          <div class="container">
+            <div class="section-title text-center">
+               <h2 class="text-center">What we do</h2> 
+            </div>
             <div class="row">
                <div class="col-md-12 col-sm-12">
                   <div class="about-info">
-                     <h2 class="text-center">What we do</h2> 
                            <p>Plasma therapy is an experimental COVID-19 therapy. Before you register, please consult your doctor if this is required. Only patients with a case sheet from the doctor on duty will be matched.</p>
                            <p>It is a non commercial initiative started with an intention of helping people out in whatever possible way. If you want to reach out and understand more about the initiative, please email us on <strong>getplasmadonorin@gmail.com</strong>.</p>
                            <p>We do not promote any monetary transaction between patient and donor.</p>

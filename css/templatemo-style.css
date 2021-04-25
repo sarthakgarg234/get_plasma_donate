@@ -17,7 +17,12 @@ body {
   padding-top: 70px;
 }
 
-
+.form-control {
+    height: 45px;
+    font-size: 18px;
+        margin-bottom: 5px;
+        border-color:  #29ca8e;
+  }
 /*---------------------------------------
    TYPOGRAPHY              
 -----------------------------------------*/
@@ -50,14 +55,105 @@ h3 a {
   color: #454545;
 }
 
-p {
+p,li {
   color: #000;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: normal;
-  line-height: 24px;
+  line-height: 30px;
 }
 
+p{
+  margin-bottom: 5px;
+}
+/***********custom check box************/
 
+/* Base for label styling */
+  [type="checkbox"]:not(:checked),
+  [type="checkbox"]:checked {
+    position: absolute;
+    left: 0;
+    opacity: 0.01;
+  }
+  [type="checkbox"]:not(:checked) + label,
+  [type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 2.3em;
+
+    line-height: 1.7;
+    cursor: pointer;
+  }
+
+  /* checkbox aspect */
+  [type="checkbox"]:not(:checked) + label:before,
+  [type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.4em;
+    height: 1.4em;
+    border: 1px solid #aaa;
+    background: #FFF;
+    border-radius: .2em;
+    box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 rgba(41, 202, 142, .2);
+    -webkit-transition: all .275s;
+        transition: all .275s;
+  }
+
+  /* checked mark aspect */
+  [type="checkbox"]:not(:checked) + label:after,
+  [type="checkbox"]:checked + label:after {
+    content: '\2713';
+    position: absolute;
+    top: .525em;
+    left: .18em;
+    font-size: 1.375em;
+    color: #29ca8e;
+    line-height: 0;
+    -webkit-transition: all .2s;
+        transition: all .2s;
+  }
+
+  /* checked mark aspect changes */
+  [type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0) rotate(45deg);
+        transform: scale(0) rotate(45deg);
+  }
+
+  [type="checkbox"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0);
+  }
+
+  /* Disabled checkbox */
+  [type="checkbox"]:disabled:not(:checked) + label:before,
+  [type="checkbox"]:disabled:checked + label:before {
+    box-shadow: none;
+    border-color: #bbb;
+    background-color: #e9e9e9;
+  }
+
+  [type="checkbox"]:disabled:checked + label:after {
+    color: #777;
+  }
+
+  [type="checkbox"]:disabled + label {
+    color: #aaa;
+  }
+
+  /* Accessibility */
+  [type="checkbox"]:checked:focus + label:before,
+  [type="checkbox"]:not(:checked):focus + label:before {
+    box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 6px rgba(41, 202, 142, .2);
+  }
+
+label{
+  outline: none !important;
+  font-size: 18px;
+    margin-bottom: 20px;
+}
 
 /*---------------------------------------
    GENERAL               
@@ -104,6 +200,8 @@ a:hover, a:active, a:focus {
 
 .section-title h2 {
   margin: 0;
+  text-transform: uppercase;
+  padding: 0;
 }
 
 .section-title small {
@@ -167,7 +265,8 @@ font-size: 16px;
 
 section {
   position: relative;
-  padding: 100px 0;
+  padding: 40px 0;
+  margin-bottom: 30px;
 }
 
 #team,
@@ -281,8 +380,8 @@ section {
 }
 
 .custom-navbar .navbar-brand {
-  color: #454545;
-  font-size: 18px;
+  color: #29ca8e;
+  font-size: 20px;
   font-weight: bold;
   line-height: 40px;
 }
@@ -362,6 +461,7 @@ section {
   color: #f9f9f9;
   font-size: 18px;
   font-weight: 500;
+      line-height: 26px;
   margin: 0;
   padding: 5px 0 40px 0;
 }
@@ -907,11 +1007,16 @@ footer .social-icon {
   background: #29ca8e;
   color: #ffffff;
 }
-.find_a_donor{
-  padding-top: 30px;
-}
+
 .find_a_donor .selection-box{
   margin-bottom: 15px;
+}
+.find_a_donor input[type="submit"]{
+  background: #29ca8e;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  font-size: 18px; 
 }
 .find_a_donor select{
   border-color: #000;
@@ -957,6 +1062,32 @@ float: right;
 .dataTables_filter input{
    padding: 5px 5px;
 }
+.major_cities ol{
+      display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.major_cities ol li{
+  width: 50%;
+  margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*---------------------------------------
    RESPONSIVE STYLES              
 -----------------------------------------*/
@@ -971,11 +1102,13 @@ float: right;
   h5,p{
     font-size: 16px;
   }
-  section,
-  footer {
-    padding: 60px 0;
-  }
 
+  footer {
+    padding: 40px 0;
+  }
+  section{
+    padding: 40px 0 0;
+  }
   .home-slider .item {
     background-position: center center;
         height: 450px;
@@ -1035,8 +1168,8 @@ float: right;
 
   .custom-navbar .navbar-brand,
   .top-nav-collapse .navbar-brand {
-    color: #252525;
-    font-weight: 600;
+    /*color: #252525;
+    font-weight: 600;*/
   }
 
   .custom-navbar .nav li a,
@@ -1067,7 +1200,7 @@ float: right;
         margin-bottom: 10px;
   }
   .who_can_donate{
-    padding-bottom: 0;
+    /*padding-bottom: 0;*/
   }
   #about figure{
     margin-bottom: 20px;
@@ -1103,7 +1236,7 @@ float: right;
   }
 
   #home h3 {
-    font-size: 14px;
+    /*font-size: 14px;*/
   }
 
   .entry-form {
