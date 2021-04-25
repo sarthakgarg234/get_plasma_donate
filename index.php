@@ -48,6 +48,9 @@
          .plasma_resources h3 a {
             color:#29ca8e;
          }
+         .pdf_files .about-info img {
+            margin-left: 10px;
+         }
       </style>
    </head>
    <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
@@ -76,6 +79,7 @@
                   <li><a href="#find_services" class="smoothScroll">Find a Donor</a></li>
                   <li><a href="#plasma_resources" class="smoothScroll">Plasma Donate</a></li>
                   <li><a href="#find_services" class="smoothScroll">Oxygen Cylinder</a></li>
+                  <li><a href="#pdf_files" class="smoothScroll">PDF Files</a></li>
                </ul>
             </div>
          </div>
@@ -93,6 +97,7 @@
                            <a href="#plasma_resources" class="section-btn btn btn-default smoothScroll">Donate Plasma</a>
                            <a href="#find_services" class="section-btn btn btn-default smoothScroll">Find a Plasma Donor</a>
                            <a href="#find_services" class="section-btn btn btn-default smoothScroll">Find Oxygen Cylinder</a>
+                           <a href="#pdf_files" class="section-btn btn btn-default smoothScroll" style="background-color: #FF0000; border: 1px solid #FF0000;">Important PDF Files</a>
                         </div>
                      </div>
                   </div>
@@ -168,6 +173,27 @@
           </div>
          </div>
       </section> 
+
+          <!-- pdf resources -->
+      <section id="pdf_files" class="pdf_files">
+         <div class="container">
+            <div class="section-title text-center">
+               <h2 class="text-center">PDF Files for Essentials Services</h2>
+            </div>
+            
+            <div class="row">
+               <div class="col-md-12 col-sm-12">
+                  <div class="about-info">
+                     <h3>1. <a href="https://www.getplasma.store/pdf/List-of-Medical-Oxygen-Gas-Suppliers-for-Home-use.pdf" target="_blank">List of Medical Oxygen Gas Suppliers For Home Use<img src="images/pdf-icon.png" width="25" height="25"></a></h3> 
+                     <h3>2. <a href="https://www.getplasma.store/pdf/List-of-Plasma-Donation-Centres-in-India.pdf" target="_blank">List of Plasma Donation Centres in India<img src="images/pdf-icon.png" width="25" height="25"></a></h3> 
+                     <h3>3. <a href="https://www.getplasma.store/pdf/List-of-Remdesivir-Distributers.pdf" target="_blank">List of Remdesivir Distributers<img src="images/pdf-icon.png" width="25" height="25"></a></h3> 
+                     <h3>4. <a href="https://www.getplasma.store/pdf/List-of-Tocilizumab-Distributor.pdf" target="_blank">List of Tocilizumab Distributor<img src="images/pdf-icon.png" width="25" height="25"></a></h3> 
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
 
       <!-- plasma resources -->
       <section id="plasma_resources" class="plasma_resources">
